@@ -1,0 +1,348 @@
+-----------------(Prompt for first Task)------------------
+
+You are an expert Python Data Engineer, NLP Engineer, and Data Analyst. Your goal is to produce a **100% correct, reproducible, and production-quality solution**.
+
+**Do not skip any reasoning step.**
+**Do not assume anything about the dataset.**
+If information is missing, explain what you infer and why.
+
+## Task
+
+I have the following assignment.
+
+---
+
+### Assessment 1: English–Hindi Dataset Processing and Analysis
+
+1. Clone the provided Hugging Face dataset repository using the terminal.
+
+2. Load the dataset.
+
+3. Extract two columns:
+
+   * Column A → English sentences
+   * Column B → Hindi sentences
+
+4. Ensure the dataset contains at least **10,000 rows**.
+
+5. Compute word counts for every English sentence and Hindi sentence.
+
+6. Keep only rows where
+
+```
+5 ≤ English word count ≤ 70
+AND
+5 ≤ Hindi word count ≤ 70
+```
+
+7. Compute
+
+```
+Word Count Difference =
+English Word Count − Hindi Word Count
+```
+
+8. Keep only rows where
+
+```
+-10 ≤ Difference ≤ +10
+```
+
+9. Compute
+
+* Character Count (English)
+* Character Count (Hindi)
+
+10. Compute
+
+```
+Character Count Difference =
+English Character Count − Hindi Character Count
+```
+
+11. Export the cleaned dataset into **Excel (.xlsx)** containing exactly these columns in this order:
+
+| English Sentences | Hindi Sentences | Word Count (English) | Word Count (Hindi) | Difference between Word Count (English) and Character Count (English) | Character Count (Hindi) | Difference between Character Count (English) and Character Count (Hindi) |
+
+---
+
+## Requirements
+
+### Step 1
+
+First determine the correct Hugging Face dataset loading method.
+
+Possible cases include
+
+* datasets.load_dataset()
+* DatasetDict
+* parquet
+* csv
+* json
+* jsonl
+* arrow
+
+Automatically detect the correct format.
+
+---
+
+### Step 2
+
+Inspect the dataset.
+
+Print
+
+* available splits
+* column names
+* number of rows
+* sample rows
+
+Do NOT assume column names.
+
+Automatically identify which columns correspond to English and Hindi.
+
+If there are multiple possible columns, explain your choice.
+
+---
+
+### Step 3
+
+Write robust preprocessing.
+
+The code must correctly handle
+
+* None values
+* NaN
+* empty strings
+* extra whitespace
+* tabs
+* multiple spaces
+* Unicode Hindi text
+* punctuation
+
+---
+
+### Step 4
+
+Word Count Rules
+
+Count words using whitespace tokenization after normalization.
+
+For example
+
+```
+"Hello   world"
+
+↓
+
+2 words
+```
+
+Similarly,
+
+```
+"नमस्ते    दुनिया"
+
+↓
+
+2 words
+```
+
+---
+
+### Step 5
+
+Character Count Rules
+
+Character count should include spaces and punctuation exactly as stored after trimming leading/trailing whitespace.
+
+Do NOT remove punctuation.
+
+---
+
+### Step 6
+
+Filtering Rules
+
+Apply filters in this exact order:
+
+1. Remove invalid rows
+2. Compute English word count
+3. Compute Hindi word count
+4. Keep only rows with both counts between 5 and 70
+5. Compute word-count difference
+6. Keep only rows whose difference is between -10 and +10
+7. Compute character counts
+8. Compute character-count difference
+
+---
+
+### Step 7
+
+Validation
+
+Print
+
+Original rows
+
+↓
+
+Rows after cleaning
+
+↓
+
+Rows after word-count filtering
+
+↓
+
+Rows after difference filtering
+
+↓
+
+Final dataset size
+
+Verify that every remaining row satisfies all constraints.
+
+---
+
+### Step 8
+
+Export
+
+Save as
+
+```
+cleaned_dataset.xlsx
+```
+
+using
+
+```
+pandas.to_excel()
+```
+
+with
+
+```
+index=False
+```
+
+---
+
+### Step 9
+
+Provide terminal commands.
+
+Include
+
+```
+git clone ...
+cd ...
+python ...
+pip install ...
+```
+
+if required.
+
+---
+
+### Step 10
+
+Libraries
+
+Use only
+
+```
+datasets
+pandas
+numpy
+openpyxl
+```
+
+No unnecessary libraries.
+
+---
+
+### Step 11
+
+Code Quality
+
+Produce one complete Python script that runs from top to bottom.
+
+The script should be executable without modification except for the dataset name.
+
+Use functions where appropriate.
+
+Include comments explaining each major step.
+
+---
+
+### Step 12
+
+Before finishing, perform a self-review.
+
+Verify:
+
+* no missing imports
+* no undefined variables
+* no syntax errors
+* correct filtering logic
+* correct difference calculations
+* correct column order
+* correct Excel export
+* code runs sequentially
+
+If you find any issue, fix it before presenting the final answer.
+
+---
+
+## Output Format
+
+Provide your response in the following order:
+
+1. Explanation of the approach.
+2. Terminal commands.
+3. Complete Python script.
+4. Expected console output.
+5. Explanation of each output column.
+6. Common mistakes and how the code avoids them.
+7. Final verification checklist confirming every assignment requirement is satisfied.
+
+**Do not provide pseudocode.**
+**Provide complete executable Python code only.**
+**Double-check every calculation before presenting the answer.**
+
+
+
+
+
+---------------------(prompt vfor second Task)---------------
+You are an expert Python Data Engineer, NLP Engineer, and Data Analyst. Your goal is to produce a **100% correct, reproducible, and production-quality solution**.
+
+**Do not skip any reasoning step.**
+**Do not assume anything about the dataset.**
+If information is missing, explain what you infer and why.
+
+Select Sentences
+From the dataset prepared in Assignment No. 1, take 100 English
+o
+sentences.
+Run Inference with an LLM
+o
+Use a Large Language Model (LLM) of your choice (e.g., Hugging Face
+model„ or any other translation model).Using Google_Translate and
+Helsinki-NLP are not allow
+Input the selected English sentences into the model.
+Translate into Hindi
+Generate the corresponding Hindi translations using the LLM.
+o
+Calculate BLEU, CHRF, TER Score on the translated sentences and save it in
+o
+.txt file
+Submission Format
+Prepare your output in Excel format with the following columns:
+o
+Column A: Original English sentence
+Column B: Model-generated Hindi translation
+Code File: Submit the code/script you used to run the LLM inference. The code should be
+well-documented and runnable.
