@@ -1,5 +1,3 @@
-readme_text = r"""# English → Hindi Translation with LLM
-
 ## Overview
 This project translates 100 English sentences into Hindi using Facebook's NLLB‑200‑distilled‑600M model (an open‑source LLM) and evaluates the translations with BLEU, chrF, and TER scores.
 
